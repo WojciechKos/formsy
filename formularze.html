@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ඞ</title>
+</head>
+
+<body>
+    <form>
+        <label for="imienazw">Imię i nazwisko:</label><br>
+        <input type="text" id="imienazw" name="imienazw" placeholder="Pole obowiązkowe" required><br>
+        <label for="wiek">Wiek:</label><br>
+        <input type="text" onkeypress="return numerki(event)" id="wiek" name="wiek" maxlength="2"
+            placeholder="Pole nieobowiązkowe" /><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Pole obowiązkowe" required><br>
+        <label for="PESEL">PESEL:</label><br>
+        <input type="text" onkeypress="return numerki(event)" id="PESEL" name="PESEL" maxlength="11"
+            placeholder="Pole obowiązkowe" required><br>
+        <label for="plec">Płeć:</label><br>
+        <select name="plec" id="plec">
+            <option value="F">Kobieta</option>
+            <option value="M">Mężczyzna</option>
+            <option value="M">Biznes</option>
+        </select><br>
+        <label for="telefon">Nr telefonu:</label><br>
+        <input type="tel" onkeypress="return numerki(event)" id="telefon" name="telefon" maxlength="9"
+            placeholder="Prefix +48, obowiązkowe" required><br>
+        <label for=" klasa">Klasa:</label><br>
+        <input type="text" onkeypress="return omagod(event)" id="klasa" name="klasa" placeholder="Pole nieobowiązkowe"
+            maxlength="2"><br>
+        <label for="tytul">Tytuł książki:</label><br>
+        <input type="text" id="tytul" name="tytul" placeholder="Pole obowiązkowe" required><br>
+        <label for="wydawca">Wydawca:</label><br>
+        <input type="text" id="wydawca" name="wydawca" placeholder="Pole obowiązkowe" required><br>
+        <label for="ISBN">ISBN:</label><br>
+        <input type="text" id="ISBN" name="ISBN" placeholder="Pole obowiązkowe" required><br>
+        <label for="nrewid">Numer ewidencyjny:</label><br>
+        <input type="text" id="nrewid" name="nrewid" placeholder="Pole obowiązkowe" required><br>
+        <label for="uwagi">Uwagi:</label><br>
+        <input type="text" id="uwagi" name="uwagi" placeholder="Pole nieobowiązkowe"><br><br>
+        <input type="submit" value="Wyślij">
+    </form>
+    <script>
+        function numerki(event) {
+            var ascii = event.which ? event.which : event.keyCode;
+            if (ascii < 48 || ascii > 57) return false;
+            return true;
+        }
+
+        function omagod(event) {
+            var pierwszy = document.getElementById("klasa");
+            var drugi = document.getElementById("klasa");
+            var ascii = event.which ? event.which : event.keyCode;
+            if (pierwszy.substring(0, 1)(ascii < 48 || ascii > 57) && drugi.substring(1, 2)(ascii < 97 || ascii > 122)) return false;
+            // CZEMU TY NIE DZIAŁASZ FDSJNDJSNVDHSNFHREBFGRUEIBVGFRE CFH
+            return true;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
