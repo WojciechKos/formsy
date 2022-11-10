@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ඞ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form>
+        <label for="imienazw">Imię i nazwisko:</label><br>
+        <input class="obowiazkowe" type="text" id="imienazw" name="imienazw" placeholder="Pole obowiązkowe"
+            required><br>
+        <label for="wiek">Wiek:</label><br>
+        <input class="nieobowiazkowe" type="text" onkeypress="return numerki(event)" id="wiek" name="wiek" maxlength="3"
+            placeholder="Pole nieobowiązkowe" /><br>
+        <label for="email">Email:</label><br>
+        <input class="obowiazkowe" type="email" id="email" name="email" placeholder="Pole obowiązkowe" required><br>
+        <label for="PESEL">PESEL:</label><br>
+        <input class="obowiazkowe" type="text" onchange="peselek(pesel)" onkeypress="return numerki(event)" id="PESEL"
+            name="PESEL" maxlength="11" placeholder="Pole obowiązkowe" required><br>
+        <label for="plec">Płeć:</label><br>
+        <select class="obowiazkowe" name="plec" id="plec" required>
+            <option value="F">Kobieta</option>
+            <option value="M">Mężczyzna</option>
+        </select><br>
+        <label for="telefon">Nr telefonu:</label><br>
+        <input class="obowiazkowe" type="tel" onkeypress="return numerki(event)" id="telefon" name="telefon"
+            maxlength="9" placeholder="Prefix +48, obowiązkowe" required><br>
+        <label for=" klasa">Klasa:</label><br>
+        <input class="nieobowiazkowe" type="text" onkeypress="return omagod(event)" id="klasa" name="klasa"
+            placeholder="Pole nieobowiązkowe" maxlength="2"><br>
+        <label for="tytul">Tytuł książki:</label><br>
+        <input class="obowiazkowe" type="text" id="tytul" name="tytul" placeholder="Pole obowiązkowe" required><br>
+        <label for="wydawca">Wydawca:</label><br>
+        <input class="obowiazkowe" type="text" id="wydawca" name="wydawca" placeholder="Pole obowiązkowe" required><br>
+        <label for="ISBN">ISBN:</label><br>
+        <input class="obowiazkowe" type="text" onkeypress="return numerki(event)" id="ISBN" name="ISBN"
+            placeholder="Pole obowiązkowe" required><br>
+        <label for="nrewid">Numer ewidencyjny:</label><br>
+        <input class="obowiazkowe" type="text" onkeypress="return numerki(event)" id="nrewid" name="nrewid"
+            placeholder="Pole obowiązkowe" required><br>
+        <label for="uwagi">Uwagi:</label><br>
+        <input class="nieobowiazkowe" type="text" id="uwagi" name="uwagi" placeholder="Pole nieobowiązkowe"><br><br>
+        <input type="submit" value="Wyślij">
+    </form>
+    <script>
+        function numerki(event) {
+            var ascii = event.which ? event.which : event.keyCode;
+            if (ascii < 48 || ascii > 57) return false;
+            return true;
+        }
+
+        function omagod(event) {
+            var klasa = document.getElementById("klasa");
+            var ascii = event.which ? event.which : event.keyCode;
+            if (klasa.substring(0, 1)(ascii < 48 || ascii > 57) && klasa.substring(1, 2)(ascii < 97 || ascii > 122)) return false;
+            // CZEMU TY NIE DZIAŁASZ FDSJNDJSNVDHSNFHREBFGRUEIBVGFRE CFH
+            return true;
+        }
+
+        var pesel = document.getElementById("PESEL");
+
+        function peselek(pesel) {
+            if (typeof pesel !== 'string')
+                return false;
+
+            let waga = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+            let suma = 0;
+            let nrkontrolny = parseInt(pesel.substring(10, 11));
+
+            for (let i = 0; i < waga.length; i++) {
+                suma += (parseInt(pesel.substring(i, i + 1)) * waga[i]);
+            }
+            suma = suma % 10;
+            return (10 - suma) % 10 === nrkontrolny;
+        }
+
+
+
+    </script>
+</body>
+
+</html>
